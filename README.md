@@ -27,6 +27,43 @@
 
 ## Let's Code it Up!
 
+- We are going to create two separate apps.  One will be our API backend, and the second one will be the client, a totally separate app that's going to talk to our API.  Let's start with the API server.
+
+Install the Rails API gem
 ```
 gem install rails-api
 ```
+
+Create a new API app
+```
+rails-api new appname
+```
+
+- Note that now `ApplicationController` inherits from `ActionController::API` instead of `ActionController::Base`
+- Also note that your `app` directory no longer has a `views` directory
+- This also configures the generators to skip generating views, helpers and assets when you generate a new resource
+
+Let's put in a route that we can hit, and a corresponding controller action.
+
+In `routes.rb`
+
+```ruby
+resources :gophers
+```
+
+Create a `gophers_controller.rb`, and within that let's have one action:
+
+```ruby
+    def index
+        render json: { gophers: pocket }
+    end
+```
+
+Now let's switch to working on the client
+
+## Resources
+- (Rails API gem)[https://github.com/rails-api/rails-api]
+- (ASCIIcast for Rails API gem)[http://railscasts.com/episodes/348-the-rails-api-gem?view=asciicast]
+- (Same Origin Policy)[http://en.wikipedia.org/wiki/Same-origin_policy]
+- (CORS)[http://en.wikipedia.org/wiki/Cross-origin_resource_sharing]
+- (Rack CORS gem)[http://en.wikipedia.org/wiki/Cross-origin_resource_sharing]
