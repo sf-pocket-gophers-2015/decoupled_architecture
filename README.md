@@ -27,7 +27,7 @@
 
 ## Let's Code it Up!
 
-- We are going to create two separate apps.  One will be our API backend, and the second one will be the client, a totally separate app that's going to talk to our API.  Let's start with the API server.
+We are going to create two separate apps.  One will be our API backend, and the second one will be the client, a totally separate app that's going to talk to our API.  Let's start with the API server.
 
 Install the Rails API gem
 ```
@@ -51,15 +51,34 @@ In `routes.rb`
 resources :gophers
 ```
 
-Create a `gophers_controller.rb`, and within that let's have one action:
+Create a `gophers_controller.rb`, and within that let's have one action.
 
 ```ruby
-    def index
-        render json: { gophers: pocket }
-    end
+def index
+  render json: { gophers: "pocket" }
+end
 ```
 
-Now let's switch to working on the client
+Now let's switch to working on the client.  We could use whatever we want for this, we just need a server that will serve our `.js`, `.css`, and image files.  Rails, Sinatra, Node, some other thing.  For the purposes of this demo, let's make another Rails app.
+
+```
+rails new appname
+```
+
+Now let's write some JS in our client app to hit our server app.  We'll make a file called `something.js` in our `app/assets/javascripts` folder and put an ajax call in there
+
+```javascript
+$(document).on('page:change', function() {
+    $.ajax({
+        url: 'http://localhost:3000/gophers',
+        type: 'get'
+    }).done(function() {
+        console.log('done');
+    }).fail(function() {
+        console.log('fail');
+    });
+});
+```
 
 ## Resources
 - (Rails API gem)[https://github.com/rails-api/rails-api]
