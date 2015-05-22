@@ -16,7 +16,7 @@
 - Routing
 - Handy generators
 - Developer ecosystem - gems and plugins that work with Rails out of the box
-- Lots and lots more great reasons in the (Rails API gem readme)[https://github.com/rails-api/rails-api/blob/master/README.md#why-use-rails-for-json-apis]
+- Lots and lots more great reasons in the [Rails API gem readme](https://github.com/rails-api/rails-api/blob/master/README.md#why-use-rails-for-json-apis)
 - This had become such a popular pattern that the functionality provided by the Rails API gem will be a part of Rails 5 core
 
 ## Same Origin Policy/CORS
@@ -111,8 +111,8 @@ Note that this example is an extremely permissive policy.  You may want to restr
 You can also use the `rack-cors` gem, which will set these headers in the rack middleware.
 
 ## Resources
-- (Rails API gem)[https://github.com/rails-api/rails-api]
-- (ASCIIcast for Rails API gem)[http://railscasts.com/episodes/348-the-rails-api-gem?view=asciicast]
-- (Same Origin Policy)[http://en.wikipedia.org/wiki/Same-origin_policy]
-- (CORS)[http://en.wikipedia.org/wiki/Cross-origin_resource_sharing]
-- (Rack CORS gem)[http://en.wikipedia.org/wiki/Cross-origin_resource_sharing]
+- [Rails API gem][https://github.com/rails-api/rails-api]
+- [ASCIIcast for Rails API gem][http://railscasts.com/episodes/348-the-rails-api-gem?view=asciicast]
+- [Same Origin Policy][http://en.wikipedia.org/wiki/Same-origin_policy]
+- [CORS][http://en.wikipedia.org/wiki/Cross-origin_resource_sharing]
+- [Rack CORS gem][http://en.wikipedia.org/wiki/Cross-origin_resource_sharing]
