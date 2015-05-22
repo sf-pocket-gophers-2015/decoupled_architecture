@@ -27,9 +27,9 @@
 
 ## Let's Code it Up!
 
-We are going to create two separate apps.  One will be our API backend, and the second one will be the client, a totally separate app that's going to talk to our API.  Let's start with the API server.
+We are going to create two separate apps.  One will be our API backend, and the second one will be the client, a totally separate app that's going to talk to our API.  
 
-Install the Rails API gem
+Let's start with the API server.  Install the Rails API gem
 ```
 gem install rails-api
 ```
@@ -59,13 +59,15 @@ def index
 end
 ```
 
+Let's bring up the server and leave it running, and we're ready to go.
+
 Now let's switch to working on the client.  We could use whatever we want for this, we just need a server that will serve our `.js`, `.css`, and image files.  Rails, Sinatra, Node, some other thing.  For the purposes of this demo, let's make another Rails app.
 
-```
-rails new appname
-```
+Let's create a controller, and action, a view, and a corresponding route that will serve our `.js` file.   That's all review, the only difference is that when we bring up the client's server, we will need to run it on a different port, as our server is already running on 3000.  We can pass the `-p` flag to `bin/rails` to set a different port.
 
-Now let's write some JS in our client app to hit our server app.  We'll make a file called `something.js` in our `app/assets/javascripts` folder and put an ajax call in there
+`bin/rails s -p 3003`
+
+Now let's write some JS in our client app to hit our server app.  We'll make a file called `something.js` in our `app/assets/javascripts` folder and put an ajax call in there, something like this.
 
 ```javascript
 $(document).on('page:change', function() {
@@ -79,6 +81,30 @@ $(document).on('page:change', function() {
     });
 });
 ```
+
+Almost there!  Once we get our code working, we should expect to see a CORS error, because we haven't set any headers on our server to allow cross domain access.  One way to set these headers is right in the controller, with a `before_action`.  Something like:
+
+```ruby
+class GophersController < ApplicationController
+  before_action :allow_cross_domain
+
+  def index
+    render json: { pocket: "gophers" }
+  end
+
+  private
+
+    def allow_cross_domain
+      headers['Access-Control-Allow-Origin'] = '*'
+      headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, PATCH, DELETE, OPTIONS'
+      headers['Access-Control-Allow-Headers'] = 'Origin, Content-Type, Accept, Authorization, Token'
+    end
+end
+```
+
+Note that this example is an extremely permissive policy.  You may want to restrict which domains can hit your API, or which methods you allow.
+
+You can also use the `rack-cors` gem, which will set these headers in the rack middleware.
 
 ## Resources
 - (Rails API gem)[https://github.com/rails-api/rails-api]
