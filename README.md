@@ -17,7 +17,7 @@
 - Handy generators
 - Developer ecosystem - gems and plugins that work with Rails out of the box
 - Lots and lots more great reasons in the (Rails API gem readme)[https://github.com/rails-api/rails-api/blob/master/README.md#why-use-rails-for-json-apis]
-- This had become such a popular pattern that the API functionality provided by the Rails API gem will be a part of Rails 5 core
+- This had become such a popular pattern that the functionality provided by the Rails API gem will be a part of Rails 5 core
 
 ## Same Origin Policy/CORS
 
@@ -54,8 +54,12 @@ resources :gophers
 Create a `gophers_controller.rb`, and within that let's have one action.
 
 ```ruby
-def index
-  render json: { gophers: "pocket" }
+class GophersController < ApplicationController
+
+  def index
+    render json: { gophers: "pocket" }
+  end
+  
 end
 ```
 
