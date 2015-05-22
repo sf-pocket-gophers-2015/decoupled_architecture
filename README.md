@@ -19,15 +19,15 @@
 - Lots and lots more great reasons in the [Rails API gem readme](https://github.com/rails-api/rails-api/blob/master/README.md#why-use-rails-for-json-apis)
 - This had become such a popular pattern that the functionality provided by the Rails API gem will be a part of Rails 5 core
 
-## Same Origin Policy/CORS
+## Same Origin Policy and CORS
 
-- Prevents one site from accessing a different sites DOM
-- Permits scripts running on pages originating from the same site – a combination of scheme, hostname, and port number – to access each other's DOM with no specific restrictions
+- Prevents one site from accessing a different site's DOM
+- Permits scripts running on pages originating from the same site – which is determined by an algorithm that uses a combination of scheme, hostname, and port number – to access each other's DOM with no specific restrictions
 - applies to XMLHttpRequests unless the server provides an Access-Control-Allow-Origin (CORS) header
 
 ## Let's Code it Up!
 
-We are going to create two separate apps.  One will be our API backend, and the second one will be the client, a totally separate app that's going to talk to our API.  
+We are going to create two totally separate apps.  One will be our API backend, and the second one will be the client, a totally separate app that's going to talk to our API.  
 
 Let's start with the API server.  Install the Rails API gem
 ```
@@ -63,11 +63,11 @@ class GophersController < ApplicationController
 end
 ```
 
-Let's bring up the server and leave it running, and we're ready to go.
+Let's bring up the server and leave it running, and our server app is ready to go.
 
-Now let's switch to working on the client.  We could use whatever we want for this, we just need a server that will serve our `.js`, `.css`, and image files.  Rails, Sinatra, Node, some other thing.  For the purposes of this demo, let's make another Rails app.
+Now let's switch to working on the client app.  We could use whatever we want for this, we just need a server that will serve our `.js`, `.css`, and image files.  Rails, Sinatra, Node, some other thing.  For the purposes of this demo, let's make another Rails app.
 
-Let's create a controller, and action, a view, and a corresponding route that will serve our `.js` file.   That's all review, the only difference is that when we bring up the client's server, we will need to run it on a different port, as our server is already running on 3000.  We can pass the `-p` flag to `bin/rails` to set a different port.
+Let's create a controller, and action, a view, and a corresponding route that will serve our `.js` file.   That's all review, the only difference is that when we bring up the client app, we will need to run it on a different port, as our server app is already running on 3000.  We can pass the `-p` flag to `bin/rails` to set a different port.
 
 `bin/rails s -p 3003`
 
@@ -78,10 +78,10 @@ $(document).on('page:change', function() {
     $.ajax({
         url: 'http://localhost:3000/gophers',
         type: 'get'
-    }).done(function() {
-        console.log('done');
+    }).done(function(data) {
+        console.log(data);
     }).fail(function() {
-        console.log('fail');
+        console.log('may your jimmies remain unrustled');
     });
 });
 ```
