@@ -111,8 +111,8 @@ Note that this example is an extremely permissive policy.  You may want to restr
 You can also use the `rack-cors` gem, which will set these headers in the rack middleware.
 
 ## Resources
-- [Rails API gem][https://github.com/rails-api/rails-api]
-- [ASCIIcast for Rails API gem][http://railscasts.com/episodes/348-the-rails-api-gem?view=asciicast]
-- [Same Origin Policy][http://en.wikipedia.org/wiki/Same-origin_policy]
-- [CORS][http://en.wikipedia.org/wiki/Cross-origin_resource_sharing]
-- [Rack CORS gem][http://en.wikipedia.org/wiki/Cross-origin_resource_sharing]
+- [Rails API gem](https://github.com/rails-api/rails-api)
+- [ASCIIcast for Rails API gem](http://railscasts.com/episodes/348-the-rails-api-gem?view=asciicast)
+- [Same Origin Policy](http://en.wikipedia.org/wiki/Same-origin_policy)
+- [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
+- [Rack CORS gem](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
